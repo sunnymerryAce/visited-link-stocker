@@ -1,45 +1,32 @@
 import { getCookieParameters, getLocalStorage } from './helper/util';
 
-class Index {
+export default class Index {
   /**
    * constructor
    */
   constructor() {
     // 閲覧履歴を格納するオブジェクト
-    this.linkHistory = {};
+    // this.linkHistory = getLocalStorage();
+    this.linkHistory = getCookieParameters();
     // リンクのDOM
     this.$links = document.querySelectorAll('.link');
     this.$visitedArea = document.querySelector('.visited');
+    // 業務処理
     this.initialize();
-  }
-
-  initialize() {
-    this.getHistory();
+    // 既存リンクにイベント登録
     this.bind();
   }
 
-  // 閲覧履歴を取得する
-  getHistory() {
-    // this.linkHistory = getLocalStorage();
-    this.linkHistory = getCookieParameters();
+  initialize() {
+    // 閲覧履歴からリンクを作成
     if (this.linkHistory) {
-      for (let key of Object.keys(this.linkHistory)) {
-        // 情報をオブジェクトに変換して格納
-        this.linkHistory[key] = JSON.parse(this.linkHistory[key]);
-        // DOM要素を生成する
-        this.appendLink(this.linkHistory[key]);
-      }
+      this.linkHistory = this.constructor.convertStringValueToObjectValue(
+        this.linkHistory,
+      );
+      Object.entries(this.linkHistory).forEach(([key, value]) => {
+        this.$visitedArea.appendChild(this.constructor.createLink(value));
+      });
     }
-    console.log(this.linkHistory);
-  }
-
-  // リンク要素を追加する
-  appendLink(data) {
-    const node = document.createElement('a');
-    node.setAttribute('href', data.href);
-    node.setAttribute('class', 'link');
-    node.appendChild(document.createTextNode(data.title));
-    this.$visitedArea.appendChild(node);
   }
 
   // イベント登録
@@ -67,6 +54,24 @@ class Index {
         }
       });
     });
+  }
+
+  // Valueをオブジェクトに変換する
+  static convertStringValueToObjectValue(obj) {
+    const newObj = {};
+    Object.entries(obj).forEach(([key, value]) => {
+      newObj[key] = JSON.parse(value);
+    });
+    return newObj;
+  }
+
+  // リンク要素を作成する
+  static createLink({ href, title }) {
+    const node = document.createElement('a');
+    node.setAttribute('href', href);
+    node.setAttribute('class', 'link');
+    node.appendChild(document.createTextNode(title));
+    return node;
   }
 }
 

@@ -361,11 +361,12 @@ var getLocalStorage = function getLocalStorage() {
 /*!******************************!*\
   !*** ./src/webpack/index.js ***!
   \******************************/
-/*! no exports provided */
+/*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "default", function() { return Index; });
 /* harmony import */ var core_js_modules_es6_string_iterator__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! core-js/modules/es6.string.iterator */ "./node_modules/core-js/modules/es6.string.iterator.js");
 /* harmony import */ var core_js_modules_es6_string_iterator__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_string_iterator__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var core_js_modules_es6_array_from__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! core-js/modules/es6.array.from */ "./node_modules/core-js/modules/es6.array.from.js");
@@ -376,12 +377,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_symbol_async_iterator__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! core-js/modules/es6.symbol */ "./node_modules/core-js/modules/es6.symbol.js");
 /* harmony import */ var core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_symbol__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/web.dom.iterable */ "./node_modules/core-js/modules/web.dom.iterable.js");
-/* harmony import */ var core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es6.array.iterator */ "./node_modules/core-js/modules/es6.array.iterator.js");
-/* harmony import */ var core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_6__);
-/* harmony import */ var core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/es6.object.keys */ "./node_modules/core-js/modules/es6.object.keys.js");
-/* harmony import */ var core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_object_keys__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! core-js/modules/es6.array.iterator */ "./node_modules/core-js/modules/es6.array.iterator.js");
+/* harmony import */ var core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es6_array_iterator__WEBPACK_IMPORTED_MODULE_5__);
+/* harmony import */ var core_js_modules_es7_object_entries__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! core-js/modules/es7.object.entries */ "./node_modules/core-js/modules/es7.object.entries.js");
+/* harmony import */ var core_js_modules_es7_object_entries__WEBPACK_IMPORTED_MODULE_6___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_es7_object_entries__WEBPACK_IMPORTED_MODULE_6__);
+/* harmony import */ var core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! core-js/modules/web.dom.iterable */ "./node_modules/core-js/modules/web.dom.iterable.js");
+/* harmony import */ var core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(core_js_modules_web_dom_iterable__WEBPACK_IMPORTED_MODULE_7__);
 /* harmony import */ var _helper_util__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./helper/util */ "./src/webpack/helper/util.js");
 
 
@@ -399,6 +400,14 @@ function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread n
 function _iterableToArray(iter) { if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter); }
 
 function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
@@ -418,49 +427,34 @@ function () {
     _classCallCheck(this, Index);
 
     // 閲覧履歴を格納するオブジェクト
-    this.linkHistory = {}; // リンクのDOM
+    // this.linkHistory = getLocalStorage();
+    this.linkHistory = Object(_helper_util__WEBPACK_IMPORTED_MODULE_8__["getCookieParameters"])(); // リンクのDOM
 
     this.$links = document.querySelectorAll('.link');
-    this.$visitedArea = document.querySelector('.visited');
-    this.initialize();
+    this.$visitedArea = document.querySelector('.visited'); // 業務処理
+
+    this.initialize(); // 既存リンクにイベント登録
+
+    this.bind();
   }
 
   _createClass(Index, [{
     key: "initialize",
     value: function initialize() {
-      this.getHistory();
-      this.bind();
-    } // 閲覧履歴を取得する
+      var _this = this;
 
-  }, {
-    key: "getHistory",
-    value: function getHistory() {
-      // this.linkHistory = getLocalStorage();
-      this.linkHistory = Object(_helper_util__WEBPACK_IMPORTED_MODULE_8__["getCookieParameters"])();
-
+      // 閲覧履歴からリンクを作成
       if (this.linkHistory) {
-        var _arr = Object.keys(this.linkHistory);
+        this.linkHistory = this.constructor.convertStringValueToObjectValue(this.linkHistory);
+        console.log(this.linkHistory);
+        Object.entries(this.linkHistory).forEach(function (_ref) {
+          var _ref2 = _slicedToArray(_ref, 2),
+              key = _ref2[0],
+              value = _ref2[1];
 
-        for (var _i = 0; _i < _arr.length; _i++) {
-          var key = _arr[_i];
-          // 情報をオブジェクトに変換して格納
-          this.linkHistory[key] = JSON.parse(this.linkHistory[key]); // DOM要素を生成する
-
-          this.appendLink(this.linkHistory[key]);
-        }
+          _this.$visitedArea.appendChild(_this.constructor.createLink(value));
+        });
       }
-
-      console.log(this.linkHistory);
-    } // リンク要素を追加する
-
-  }, {
-    key: "appendLink",
-    value: function appendLink(data) {
-      var node = document.createElement('a');
-      node.setAttribute('href', data.href);
-      node.setAttribute('class', 'link');
-      node.appendChild(document.createTextNode(data.title));
-      this.$visitedArea.appendChild(node);
     } // イベント登録
 
   }, {
@@ -489,11 +483,38 @@ function () {
           }
         });
       });
+    } // Valueをオブジェクトに変換する
+
+  }], [{
+    key: "convertStringValueToObjectValue",
+    value: function convertStringValueToObjectValue(obj) {
+      var newObj = {};
+      Object.entries(obj).forEach(function (_ref3) {
+        var _ref4 = _slicedToArray(_ref3, 2),
+            key = _ref4[0],
+            value = _ref4[1];
+
+        newObj[key] = JSON.parse(value);
+      });
+      return newObj;
+    } // リンク要素を作成する
+
+  }, {
+    key: "createLink",
+    value: function createLink(_ref5) {
+      var href = _ref5.href,
+          title = _ref5.title;
+      var node = document.createElement('a');
+      node.setAttribute('href', href);
+      node.setAttribute('class', 'link');
+      node.appendChild(document.createTextNode(title));
+      return node;
     }
   }]);
 
   return Index;
 }();
+
 
 window.addEventListener('DOMContentLoaded', function () {
   window.DEV_ENV_MODEL = window.DEV_ENV_MODEL || {};
